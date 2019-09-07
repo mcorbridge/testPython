@@ -26,7 +26,7 @@ class FindIslands:
 
         #               o o o o o
         #               x x o o o
-        #               o o o o o
+        #               o x o o o
         #               o o o o o
 
     def testZip(self):
