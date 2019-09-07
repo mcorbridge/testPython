@@ -6,7 +6,7 @@ def worker():
     logging.debug('Starting')
     time.sleep(1)
     k = 0
-    while k < 99:
+    while k < 100:
         print("blink Red [" + str(k) + "]")
         time.sleep(0.1)
         k = k + 1
@@ -17,7 +17,7 @@ def my_service():
     logging.debug('Starting')
     time.sleep(1)
     k = 0
-    while k < 99:
+    while k < 100:
         print("blink Blue [" + str(k) + "]")
         time.sleep(0.1)
         k = k + 1
