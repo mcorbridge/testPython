@@ -59,7 +59,7 @@ WhatAreKwargs.testKwargs(1,2)
 WhatAreKwargs.testKwargs(1,2,3)
 WhatAreKwargs.testKwargs(1,2,3,4)
 
-WhatAreKwargs.testDictKwards(Firstname="Sita", Lastname="Sharma", Age=22, Phone=1234567890)
+WhatAreKwargs.testDictKwards(Firstname="Moppy", Lastname="Wingawonga", Age=22, Phone=1234567890)
 WhatAreKwargs.testDictKwards(Firstname="John", Lastname="Wood", Email="johnwood@nomail.com", Country="Wakanda", Age=25, Phone=9876543210)
 WhatAreKwargs.testTimer()
 
