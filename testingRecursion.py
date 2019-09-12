@@ -3,7 +3,7 @@
 # This is a python algorithm to solve a 'dancing links' recursion simulation encapsulated in a 'find islands' problem.
 # The algorithm finds cells that share adjacent sides on the xy axis and groups them as islands.
 # One important advantage I can see for Python over Java is that Python lists can take any datatype. This means that I
-# do not need to create a bunch of Java objects to store the cell / island information
+# do not need to create a bunch of Java objects to store the cell / island information.
 
 
 class TestingRecursion:
