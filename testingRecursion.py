@@ -71,6 +71,7 @@ class TestingRecursion:
     # inspect the neighbour cell, recursively, directly to the right (x-axis) & below (y-axis) to determine if those
     # cells have an 'x' property that indicates they should be grouped together as an island
     def xNeighbor(self, cell):
+        # do not inspect cells at the right border or lower border - out of bounds
         if cell[2][0] != 4 and cell[2][1] != 4:
             numCellRbeside = cell[2][1] + 1
             numRowBeneath = cell[2][0] + 1
@@ -87,7 +88,8 @@ class TestingRecursion:
             if cellBelow[0] == 'x' and cellBelow[1] == 0:
                 adjacentCells.append(cellBelow)
                 cellBelow[1] = cell[1]
-            # inspect these cells recursively (if they exist) to determine their relationship
+
+            # inspect these cells recursively (if they exist) to determine their relationships
             if len(adjacentCells) != 0:
                 for aCell in adjacentCells:
                     self.xNeighbor(aCell)  # <----- recursion!
