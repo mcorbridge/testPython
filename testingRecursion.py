@@ -32,7 +32,7 @@ class TestingRecursion:
         self.row9 = [['o', '', 0, (4, 0)], ['o', '', 0, (4, 1)], ['o', '', 0, (4, 2)], ['o', '', 0, (4, 3)],
                      ['o', '', 0, (4, 4)]]
 
-        self.row10 = [['x', '', 0, (0, 0)], ['o', '', 0, (0, 1)], ['o', '', 0, (0, 2)], ['o', '', 0, (0, 3)],
+        self.row10 = [['x', '', 0, (0, 0)], ['x', '', 0, (0, 1)], ['o', '', 0, (0, 2)], ['o', '', 0, (0, 3)],
                      ['o', '', 0, (0, 4)]]
         self.row11 = [['o', '', 0, (1, 0)], ['o', '', 0, (1, 1)], ['o', '', 0, (1, 2)], ['o', '', 0, (1, 3)],
                      ['o', '', 0, (1, 4)]]
@@ -59,7 +59,7 @@ class TestingRecursion:
 
     def iterateRow(self, row):
         for cell in row:
-            if cell[0] == 'x':
+            if cell[0] == 'x' and cell[2] == 0:
                 self.islandNum = self.islandNum + 1
                 cell[2] = self.islandNum
                 self.xNeighbor(cell)
@@ -73,19 +73,18 @@ class TestingRecursion:
             adjacentCells = []
 
             if cellRbeside[0] == 'x' and cellRbeside[2] == 0:
-                cellRbeside[2] = self.islandNum
                 adjacentCells.append(cellRbeside)
+                cellRbeside[2] = cell[2]
 
             if cellBelow[0] == 'x' and cellBelow[2] == 0:
-                cellBelow[2] = self.islandNum
                 adjacentCells.append(cellBelow)
+                cellBelow[2] = cell[2]
 
-            if len(adjacentCells) == 0:
-                self.islandNum = self.islandNum + 1
-            else:
-                # do recursion here !
+            if len(adjacentCells) != 0:
                 for aCell in adjacentCells:
                     self.xNeighbor(aCell)
+            else:
+                print("no more cells adjacent to: " + str(cell))
 
     def getNumIslands(self):
         print("number of islands = " + str(self.islandNum))
