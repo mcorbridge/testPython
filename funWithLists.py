@@ -2,6 +2,11 @@ import copy
 
 class FunWithLists:
 
+    print("-----------------------------------")
+    foo = "foo"
+    print("| print foo >>>>> foo " + foo + "         |")
+    print("-----------------------------------")
+
     def __init__(self):
         print("FUN WITH PYTHON LISTS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 
@@ -55,6 +60,9 @@ class FunWithLists:
         def rFunc():
             print("rFunc >>>>>> " + str(self.x) + " " + y)
         return rFunc
+
+    def printFoo(self):
+        print("printFoo >>>>> self.foo " + self.foo)
 
 
 funWithLists = FunWithLists()
@@ -122,3 +130,5 @@ print(funWithLists.testTernary(101))
 
 r = funWithLists.testRFunc()
 r()
+
+funWithLists.printFoo()
