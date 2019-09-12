@@ -109,6 +109,7 @@ class TestingRecursion:
             if cellBelow[0] == 'x':
                 print("add to set " + str(cellBelow[3]))
                 self.islandSet.add(cellBelow[3])
+            #     do some recursion here !
             print()
 
     def inspectSet(self):
