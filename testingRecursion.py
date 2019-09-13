@@ -80,6 +80,8 @@ class TestingRecursion:
                        self.row23, self.row24]
         self.islandNum = 0
 
+        self.boundary = {"lower":0, "upper":len(self.square) - 1}
+
     # print out the square with annotations showing island associations and all cell info
     def printSquare(self):
         for row in self.square:
@@ -111,7 +113,6 @@ class TestingRecursion:
     # This function will be called recursively
     def xNeighbor(self, cell):
 
-        boundary = len(self.square) - 1  # do not inspect cells at the top, left, right, or lower grid border - out of bounds
         adjacentCells = []  # list to hold the neighbouring cells for the recursion
         cellLeft = [0, 0]  # initialize the cell neighbour to the left
         cellRight = [0, 0]  # initialize the cell neighbour to the right
@@ -120,21 +121,21 @@ class TestingRecursion:
 
         # cell left if cell(x) != 0
         # what unreadable claptrap .... but it works
-        if cell[2][1] != 0:
+        if cell[2][1] != self.boundary["lower"]:
             if self.square[cell[2][0]][cell[2][1] - 1][0] == 'x' and self.square[cell[2][0]][cell[2][1] - 1][1] == 0:
                 adjacentCells.append(self.square[cell[2][0]][cell[2][1] - 1])
                 self.square[cell[2][0]][cell[2][1] - 1][1] = cell[1]
 
-        # cell right if cell(x) != boundary
-        if cell[2][1] != boundary:
+        # cell right if cell(x) != upper boundary
+        if cell[2][1] != self.boundary["upper"]:
             cellRight = self.square[cell[2][0]][cell[2][1] + 1]
 
-        # cell beneath if cell(y) != boundary
-        if cell[2][0] != boundary:
+        # cell beneath if cell(y) != upper boundary
+        if cell[2][0] != self.boundary["upper"]:
             cellBelow = self.square[cell[2][0] + 1][cell[2][1]]
 
-        # cell above if cell(y) != 0
-        if cell[2][0] != 0:
+        # cell above if cell(y) != lower boundary
+        if cell[2][0] != self.boundary["lower"]:
             cellAbove = self.square[cell[2][0] - 1][cell[2][1]]
 
         # 'x' indicates the cell to the LEFT is neighbour, '0' indicates it is not CURRENTLY part of an island
