@@ -28,16 +28,11 @@ class TestingRecursion:
     # set up the sample grid (square)
     def __init__(self):
 
-        self.row0 = [['o', 0, (0, 0)], ['o', 0, (0, 1)], ['o', 0, (0, 2)], ['o', 0, (0, 3)],
-                     ['o', 0, (0, 4)]]
-        self.row1 = [['o', 0, (1, 0)], ['x', 0, (1, 1)], ['x', 0, (1, 2)], ['o', 0, (1, 3)],
-                     ['o', 0, (1, 4)]]
-        self.row2 = [['o', 0, (2, 0)], ['x', 0, (2, 1)], ['x', 0, (2, 2)], ['o', 0, (2, 3)],
-                     ['o', 0, (2, 4)]]
-        self.row3 = [['o', 0, (3, 0)], ['x', 0, (3, 1)], ['o', 0, (3, 2)], ['o', 0, (3, 3)],
-                     ['o', 0, (3, 4)]]
-        self.row4 = [['o', 0, (4, 0)], ['o', 0, (4, 1)], ['o', 0, (4, 2)], ['o', 0, (4, 3)],
-                     ['o', 0, (4, 4)]]
+        self.row0 = [['x', 0, (0, 0)], ['x', 0, (0, 1)], ['x', 0, (0, 2)], ['x', 0, (0, 3)],['x', 0, (0, 4)]]
+        self.row1 = [['x', 0, (1, 0)], ['o', 0, (1, 1)], ['x', 0, (1, 2)], ['o', 0, (1, 3)],['o', 0, (1, 4)]]
+        self.row2 = [['x', 0, (2, 0)], ['x', 0, (2, 1)], ['x', 0, (2, 2)], ['x', 0, (2, 3)],['x', 0, (2, 4)]]
+        self.row3 = [['o', 0, (3, 0)], ['o', 0, (3, 1)], ['x', 0, (3, 2)], ['o', 0, (3, 3)],['x', 0, (3, 4)]]
+        self.row4 = [['x', 0, (4, 0)], ['x', 0, (4, 1)], ['x', 0, (4, 2)], ['x', 0, (4, 3)],['x', 0, (4, 4)]]
 
         self.row5 = [['o', 0, (0, 0)], ['o', 0, (0, 1)], ['o', 0, (0, 2)], ['o', 0, (0, 3)],
                      ['o', 0, (0, 4)]]
@@ -73,14 +68,14 @@ class TestingRecursion:
         self.row23 = [['o', 0, (8, 0)], ['o', 0, (8, 1)], ['o', 0, (8, 2)], ['o', 0, (8, 3)], ['o', 0, (8, 4)],['o', 0, (8, 5)], ['o', 0, (8, 6)], ['o', 0, (8, 7)], ['o', 0, (8, 8)], ['o', 0, (8, 9)]]
         self.row24 = [['o', 0, (9, 0)], ['o', 0, (9, 1)], ['o', 0, (9, 2)], ['o', 0, (9, 3)], ['o', 0, (9, 4)],['o', 0, (9, 5)], ['o', 0, (9, 6)], ['o', 0, (9, 7)], ['o', 0, (9, 8)], ['o', 0, (9, 9)]]
 
-        # self.square = [self.row0, self.row1, self.row2, self.row3, self.row4]
+        self.square = [self.row0, self.row1, self.row2, self.row3, self.row4]
         # self.square = [self.row5, self.row6, self.row7, self.row8, self.row9]
         # self.square = [self.row10, self.row11, self.row12, self.row13, self.row14]
-        self.square = [self.row15, self.row16, self.row17, self.row18, self.row19, self.row20, self.row21, self.row22,
-                       self.row23, self.row24]
+        # self.square = [self.row15, self.row16, self.row17, self.row18, self.row19, self.row20, self.row21, self.row22, self.row23, self.row24]
         self.islandNum = 0
 
         self.boundary = {"lower":0, "upper":len(self.square) - 1}
+        self.recursionLoops = 0
 
     # print out the square with annotations showing island associations and all cell info
     def printSquare(self):
@@ -104,7 +99,7 @@ class TestingRecursion:
     def iterateRow(self, row):
         for cell in row:
             if cell[0] == 'x' and cell[1] == 0:
-                self.islandNum = self.islandNum + 1  # <---- here (only HERE) is where the island number is incremented
+                self.islandNum += 1  # <---- here (only HERE) is where the island number is incremented
                 cell[1] = self.islandNum
                 self.xNeighbor(cell)
 
@@ -161,10 +156,11 @@ class TestingRecursion:
         if len(adjacentCells) != 0:
             for aCell in adjacentCells:
                 self.xNeighbor(aCell)  # <---- recursion
+                self.recursionLoops += 1
 
     # how many islands did we find?
     def getNumIslands(self):
-        print("number of islands = " + str(self.islandNum))
+        print("number of islands = " + str(self.islandNum) + " [" + str(self.recursionLoops) + " loops]")
 
 
 testingRecursion = TestingRecursion()
