@@ -59,8 +59,8 @@ class TestingRecursion:
         self.row18 = [['o', 0, (3, 0)], ['x', 0, (3, 1)], ['x', 0, (3, 2)], ['o', 0, (3, 3)], ['o', 0, (3, 4)]]
         self.row19 = [['o', 0, (4, 0)], ['o', 0, (4, 1)], ['o', 0, (4, 2)], ['o', 0, (4, 3)], ['o', 0, (4, 4)]]
 
-        self.row15 = [['o', 0, (0, 0)], ['o', 0, (0, 1)], ['o', 0, (0, 2)], ['o', 0, (0, 3)], ['o', 0, (0, 4)],['o', 0, (0, 5)], ['o', 0, (0, 6)], ['o', 0, (0, 7)], ['o', 0, (0, 8)], ['o', 0, (0, 9)]]
-        self.row16 = [['o', 0, (1, 0)], ['o', 0, (1, 1)], ['o', 0, (1, 2)], ['o', 0, (1, 3)], ['o', 0, (1, 4)],['o', 0, (1, 5)], ['o', 0, (1, 6)], ['o', 0, (1, 7)], ['o', 0, (1, 8)], ['o', 0, (1, 9)]]
+        self.row15 = [['o', 0, (0, 0)], ['o', 0, (0, 1)], ['o', 0, (0, 2)], ['o', 0, (0, 3)], ['o', 0, (0, 4)],['o', 0, (0, 5)], ['o', 0, (0, 6)], ['o', 0, (0, 7)], ['x', 0, (0, 8)], ['x', 0, (0, 9)]]
+        self.row16 = [['o', 0, (1, 0)], ['o', 0, (1, 1)], ['o', 0, (1, 2)], ['o', 0, (1, 3)], ['o', 0, (1, 4)],['o', 0, (1, 5)], ['o', 0, (1, 6)], ['o', 0, (1, 7)], ['x', 0, (1, 8)], ['x', 0, (1, 9)]]
         self.row17 = [['x', 0, (2, 0)], ['o', 0, (2, 1)], ['o', 0, (2, 2)], ['o', 0, (2, 3)], ['o', 0, (2, 4)],['o', 0, (2, 5)], ['o', 0, (2, 6)], ['o', 0, (2, 7)], ['o', 0, (2, 8)], ['o', 0, (2, 9)]]
         self.row18 = [['x', 0, (3, 0)], ['o', 0, (3, 1)], ['o', 0, (3, 2)], ['x', 0, (3, 3)], ['o', 0, (3, 4)],['o', 0, (3, 5)], ['o', 0, (3, 6)], ['o', 0, (3, 7)], ['o', 0, (3, 8)], ['o', 0, (3, 9)]]
         self.row19 = [['x', 0, (4, 0)], ['o', 0, (4, 1)], ['o', 0, (4, 2)], ['x', 0, (4, 3)], ['o', 0, (4, 4)],['o', 0, (4, 5)], ['o', 0, (4, 6)], ['o', 0, (4, 7)], ['o', 0, (4, 8)], ['o', 0, (4, 9)]]
@@ -82,6 +82,14 @@ class TestingRecursion:
         for row in self.square:
             print(str(row))
 
+    # print out the square with annotations showing island associations
+    def prettyPrintSquare(self):
+        for row in self.square:
+            xRow = []
+            for cell in row:
+                xRow.append(cell[0])
+            print(xRow)
+
     # this starts the process to find the islands by viewing each row in the square
     def iterateSquare(self):
         for row in self.square:
@@ -95,12 +103,12 @@ class TestingRecursion:
                 cell[1] = self.islandNum
                 self.xNeighbor(cell)
 
-    # inspect the neighbour cells, recursively, directly to the left, right (x-axis) & below (y-axis) to determine if those
-    # cells have an 'x' property that indicates they should be grouped together as an island
+    # inspect the neighbour cells, recursively, directly to the left, right (x-axis) & below (y-axis) to determine if
+    # those cells have an 'x' property that indicates they should be grouped together as an island
     # This function will be called recursively
     def xNeighbor(self, cell):
 
-        boundry = len(self.square) - 1  # do not inspect cells at the left,right, or lower grid border - out of bounds
+        boundry = len(self.square) - 1  # do not inspect cells at the top, left, right, or lower grid border - out of bounds
         adjacentCells = []  # list to hold the neighbouring cells for the recursion
         cellLeft = [0, 0]  # initialize the cell neighbour to the left
         cellRight = [0, 0]  # initialize the cell neighbour to the right
@@ -119,12 +127,13 @@ class TestingRecursion:
         if cell[2][0] != boundry:
             cellBelow = self.square[cell[2][0] + 1][cell[2][1]]
 
-            # cell above if cell(y) != 0
-            if cell[2][0] != 0:
-                cellAbove = self.square[cell[2][0] - 1][cell[2][1]]
+        # cell above if cell(y) != 0
+        if cell[2][0] != 0:
+            cellAbove = self.square[cell[2][0] - 1][cell[2][1]]
 
         # 'x' indicates the cell to the LEFT is neighbour, '0' indicates it is not CURRENTLY part of an island
         if cellLeft[0] == 'x' and cellLeft[1] == 0:
+            # append this cell to list for recursion
             adjacentCells.append(cellLeft)
             # give the neighbouring cell the same island num as the reference cell. Now part of an island!
             cellLeft[1] = cell[1]
@@ -154,6 +163,8 @@ testingRecursion = TestingRecursion()
 
 testingRecursion.iterateSquare()
 
-testingRecursion.printSquare()
+# testingRecursion.printSquare()
+
+testingRecursion.prettyPrintSquare()
 
 testingRecursion.getNumIslands()
