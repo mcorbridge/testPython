@@ -111,7 +111,7 @@ class TestingRecursion:
     # This function will be called recursively
     def xNeighbor(self, cell):
 
-        boundry = len(self.square) - 1  # do not inspect cells at the top, left, right, or lower grid border - out of bounds
+        boundary = len(self.square) - 1  # do not inspect cells at the top, left, right, or lower grid border - out of bounds
         adjacentCells = []  # list to hold the neighbouring cells for the recursion
         cellLeft = [0, 0]  # initialize the cell neighbour to the left
         cellRight = [0, 0]  # initialize the cell neighbour to the right
@@ -125,12 +125,12 @@ class TestingRecursion:
                 adjacentCells.append(self.square[cell[2][0]][cell[2][1] - 1])
                 self.square[cell[2][0]][cell[2][1] - 1][1] = cell[1]
 
-        # cell right if cell(x) != boundry
-        if cell[2][1] != boundry:
+        # cell right if cell(x) != boundary
+        if cell[2][1] != boundary:
             cellRight = self.square[cell[2][0]][cell[2][1] + 1]
 
-        # cell beneath if cell(y) != boundry
-        if cell[2][0] != boundry:
+        # cell beneath if cell(y) != boundary
+        if cell[2][0] != boundary:
             cellBelow = self.square[cell[2][0] + 1][cell[2][1]]
 
         # cell above if cell(y) != 0
