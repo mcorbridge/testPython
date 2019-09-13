@@ -16,6 +16,9 @@
 #
 # This is a python algorithm using recursion in a 'find islands' problem in a SQUARE (only!) grid.
 # The algorithm finds cells that share adjacent sides on the xy axis and groups them as islands.
+# Tree traversal (also known as tree search) is a form of graph traversal and refers to the process of visiting
+# (checking and/or updating) each node in a tree data structure, exactly once. Such traversals are classified by the
+# order in which the nodes are visited.
 # One important advantage I can see for Python over Java is that Python lists can take any datatype. This means that I
 # do not need to create a bunch of Java objects to store the cell / island information.
 
