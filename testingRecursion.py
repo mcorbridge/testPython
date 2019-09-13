@@ -116,8 +116,11 @@ class TestingRecursion:
         cellAbove = [0, 0]  # initialize the cell neighbour directly above
 
         # cell left if cell(x) != 0
+        # what unreadable claptrap .... but it works
         if cell[2][1] != 0:
-            cellLeft = self.square[cell[2][0]][cell[2][1] - 1]
+            if self.square[cell[2][0]][cell[2][1] - 1][0] == 'x' and self.square[cell[2][0]][cell[2][1] - 1][1] == 0:
+                adjacentCells.append(self.square[cell[2][0]][cell[2][1] - 1])
+                self.square[cell[2][0]][cell[2][1] - 1][1] = cell[1]
 
         # cell right if cell(x) != boundry
         if cell[2][1] != boundry:
@@ -132,11 +135,11 @@ class TestingRecursion:
             cellAbove = self.square[cell[2][0] - 1][cell[2][1]]
 
         # 'x' indicates the cell to the LEFT is neighbour, '0' indicates it is not CURRENTLY part of an island
-        if cellLeft[0] == 'x' and cellLeft[1] == 0:
-            # append this cell to list for recursion
-            adjacentCells.append(cellLeft)
-            # give the neighbouring cell the same island num as the reference cell. Now part of an island!
-            cellLeft[1] = cell[1]
+        # if cellLeft[0] == 'x' and cellLeft[1] == 0:
+        #     # append this cell to list for recursion
+        #     adjacentCells.append(cellLeft)
+        #     # give the neighbouring cell the same island num as the reference cell. Now part of an island!
+        #     cellLeft[1] = cell[1]
 
         if cellRight[0] == 'x' and cellRight[1] == 0:
             adjacentCells.append(cellRight)
@@ -150,6 +153,7 @@ class TestingRecursion:
             adjacentCells.append(cellAbove)
             cellAbove[1] = cell[1]
 
+        # this loop is essentially implements a depth-first search (DFS) tree traversal
         if len(adjacentCells) != 0:
             for aCell in adjacentCells:
                 self.xNeighbor(aCell)  # <---- recursion
