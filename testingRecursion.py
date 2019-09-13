@@ -77,12 +77,12 @@ class TestingRecursion:
                        self.row23, self.row24]
         self.islandNum = 0
 
-    # print out the square with annotations showing island associations
+    # print out the square with annotations showing island associations and all cell info
     def printSquare(self):
         for row in self.square:
             print(str(row))
 
-    # print out the square with annotations showing island associations
+    # print out the square with annotations showing island associations showing only 'x' or 'o'
     def prettyPrintSquare(self):
         for row in self.square:
             xRow = []
