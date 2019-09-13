@@ -103,7 +103,7 @@ class TestingRecursion:
                 cell[1] = self.islandNum
                 self.xNeighbor(cell)
 
-    # inspect the neighbour cells, recursively, directly to the left, right (x-axis) & below (y-axis) to determine if
+    # inspect the neighbour cells, recursively, directly to the left, right (x-axis) & above, below (y-axis) to determine if
     # those cells have an 'x' property that indicates they should be grouped together as an island
     # This function will be called recursively
     def xNeighbor(self, cell):
