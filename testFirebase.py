@@ -1,18 +1,21 @@
 from firebase import firebase
 import time
+import urllib
 
 
 class TestFirebase:
     def __init__(self):
         print("This is an attempt to connect to Firebase")
+        try:
+            fbTest = firebase.FirebaseApplication('https://wally-97049.firebaseio.com/', None)
+            result = fbTest.get('/users', None)
+            print(result)
+            print(type(result))
 
-        fbTest = firebase.FirebaseApplication('https://wally-97049.firebaseio.com/', None)
-        result = fbTest.get('/users', None)
-        print(result)
-        print(type(result))
-
-        for key in result:
-            print(key, '->', result[key]['date_of_birth'])
+            for key in result:
+                print(key, '->', result[key]['date_of_birth'])
+        except Exception as e:
+            print(e.args[0])
 
 
 testFirebase = TestFirebase()
