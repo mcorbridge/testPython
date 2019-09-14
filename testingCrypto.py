@@ -3,7 +3,6 @@ from Crypto.Util import Padding
 from hashlib import md5
 from base64 import b64encode, b64decode
 
-
 # from --> https://gist.github.com/Frizz925/ac0fb026314807959db5685ac149ed67  Izra Faturrahman
 
 class TestingCrypto:
