@@ -42,7 +42,7 @@ class TestingCrypto:
             cipher = AES.new(key, self.mode, iv)
             body = Padding.unpad(cipher.decrypt(body), self.bs).decode('utf-8')
             print(body)
-        except:
+        except ValueError:
             print("WRONG PASSWORD! Nice try asshole!")
 
 
