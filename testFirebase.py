@@ -1,6 +1,5 @@
 from firebase import firebase
 import time
-import urllib
 
 
 class TestFirebase:

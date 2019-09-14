@@ -4,6 +4,7 @@ from hashlib import md5
 from base64 import b64encode, b64decode
 
 # from --> https://gist.github.com/Frizz925/ac0fb026314807959db5685ac149ed67  Izra Faturrahman
+# unbreakable except from Rubber-hose cryptanalysis
 
 class TestingCrypto:
 
@@ -35,7 +36,6 @@ class TestingCrypto:
         try:
             key, body, iv = encryptedData.split(".")
             key = md5(passphrase.encode('utf-8')).hexdigest().encode('utf-8')
-            # key = b64decode(key.encode('utf-8'))
             body = b64decode(body.encode('utf-8'))
             iv = b64decode(iv.encode('utf-8'))
             cipher = AES.new(key, self.mode, iv)
@@ -62,3 +62,4 @@ encryptedData = "ODc4OWI0NWRlMzI4MDFhZDIyMGY1OWU2NmQyOWYzZTk=.hf3dzkSVEXPTMysfox
 "vRrJaqAwMf316FYklDaWEUQi5sfPvCEwpdtYEs4/hfzwgoZLQ9rxdErMjUCN548Ag==.ZTMyODAxYWQyMjBmNTllNg=="
 
 testingCrypto.decrypt(encryptedData, "Wally")
+
