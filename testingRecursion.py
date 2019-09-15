@@ -14,11 +14,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# This is a python algorithm using recursion in a 'find islands' problem in a SQUARE (only!) grid.
-# The algorithm finds cells that share adjacent sides on the xy axis and groups them as islands.
-# Tree traversal (also known as tree search) is a form of graph traversal and refers to the process of visiting
-# (checking and/or updating) each node in a tree data structure, exactly once. Such traversals are classified by the
-# order in which the nodes are visited.
+# This is a python Depth First Search (DFS) algorithm to solve a 'find islands' problem in a SQUARE (only!) grid.
+
+# Depth-first search (DFS) is an algorithm for traversing or searching tree or graph data structures. The algorithm
+# starts at the root node (selecting some arbitrary node as the root node in the case of a graph) and explores as far as
+# possible along each branch before backtracking.
+
 # One important advantage I can see for Python over Java is that Python lists can take any datatype. This means that I
 # do not need to create a bunch of Java objects to store the cell / island information.
 
@@ -73,8 +74,8 @@ class TestingRecursion:
         # self.square = [self.row0, self.row1, self.row2, self.row3, self.row4]
         # self.square = [self.row5, self.row6, self.row7, self.row8, self.row9]
         # self.square = [self.row10, self.row11, self.row12, self.row13, self.row14]
-        # self.square = [self.row15, self.row16, self.row17, self.row18, self.row19, self.row20, self.row21, self.row22, self.row23, self.row24]
-        self.square = [self.row25, self.row26, self.row27, self.row28]
+        self.square = [self.row15, self.row16, self.row17, self.row18, self.row19, self.row20, self.row21, self.row22, self.row23, self.row24]
+        # self.square = [self.row25, self.row26, self.row27, self.row28]
         self.islandNum = 0
         self.boundary = {"lower":0, "upper":len(self.square) - 1}
         self.recursionLoops = 0
