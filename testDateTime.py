@@ -1,28 +1,42 @@
 from datetime import datetime, timedelta
 
+
 # todo: when I create the timesheet app, I need to know the start date and the end date (Monday - Sunday) of the week where
 # todo: the timesheet is being submitted
 
 class TestDateTime:
 
     def __init__(self):
-        print("init TestDateTime")
+        self.startProc = self.getStartProcess()
+        print("******* init TestDateTime *******")
         self.days = ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')
         self.months = (
-        'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November',
-        'December')
+            'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
+            'November',
+            'December')
         self.now = datetime.now()
-        self.start_of_week = ""
-        self.end_of_week = ""
+        self.start_of_week = None
+        self.end_of_week = None
 
-    def dateTimeFormatter(self, date,isDayName=True):
+    def getStartProcess(self):
+        return datetime.now().microsecond
+
+    def getEndProcess(self):
+        return datetime.now().microsecond
+
+    def getProcessTime(self):
+        processTime = (self.getEndProcess() - self.startProc) / 1000
+        return str(processTime) + " msec"
+
+    def dateTimeFormatter(self, date, isDayName=True):
         year = date.year
         month = date.month
         day = date.day
         dayName = self.days[date.weekday()]
-        monthName = self.months[date.month-1]
+        monthName = self.months[date.month - 1]
         if isDayName:
-            return str(year) + '-' + str(month) + '-' + str(day) + ' [' + dayName + ' ' + monthName + ' ' + str(day) + ', ' + str(year) + ']'
+            return str(year) + '-' + str(month) + '-' + str(day) + ' [' + dayName + ' ' + monthName + ' ' + str(
+                day) + ', ' + str(year) + ']'
         else:
             return str(year) + '-' + str(month) + '-' + str(day)
 
@@ -37,11 +51,11 @@ class TestDateTime:
         self.end_of_week = self.start_of_week + timedelta(days=6)
         return self.dateTimeFormatter(self.end_of_week)
 
+
 testDateTime = TestDateTime()
+
 print(testDateTime.getNow())
 print(testDateTime.getStartOfWeek())
 print(testDateTime.getEndOfWeek())
-
-
-
-
+testDateTime.getEndProcess()
+print(testDateTime.getProcessTime())
