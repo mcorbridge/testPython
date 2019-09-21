@@ -19,6 +19,6 @@ if __name__ == "__main__":
 	margherita = Pizza.margherita()
 	prosciutto = Pizza.prosciutto()
 
-	print margherita.ingredients
-	print repr(margherita)
-	print prosciutto.ingredients
+	print (margherita.ingredients)
+	print (repr(margherita))
+	print (prosciutto.ingredients)
