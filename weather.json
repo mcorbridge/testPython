@@ -1,0 +1,40 @@
+{'clouds': {
+		'all': 1
+	},
+	'name': 'Mashpee',
+	'visibility': 16093,
+	'sys': {
+		'country': 'US',
+		'sunset': 1518127650,
+		'message': 0.0403,
+		'type': 1,
+		'id': 1281,
+		'sunrise': 1518090317
+	},
+	'weather': [{
+		'main': 'Clear',
+		'id': 800,
+		'icon': '01d',
+		'description': 'clear sky'
+	}],
+	'coord': {
+		'lat': 41.65,
+		'lon': -70.48
+	},
+	'base': 'stations',
+	'dt': 1518112380,
+	'main': {
+		'pressure': 1024,
+		'temp_min': -2,
+		'temp_max': -1,
+		'temp': -1.32,
+		'humidity': 42
+	},
+	'id': 4943297,
+	'wind': {
+		'gust': 7.2,
+		'speed': 4.1,
+		'deg': 320
+	},
+	'cod': 200
+}
