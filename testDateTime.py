@@ -1,8 +1,8 @@
 from datetime import datetime, timedelta
 
 
-# todo: when I create the timesheet app, I need to know the start date and the end date (Monday - Sunday) of the week where
-# todo: the timesheet is being submitted
+# todo: when I create the timesheet app, I need to know the start date and the end date (Monday - Sunday) of the week
+# todo: where the timesheet is being submitted
 
 class TestDateTime:
 
@@ -14,7 +14,8 @@ class TestDateTime:
             'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
             'November',
             'December')
-        self.now = datetime.now()
+        self.dateNow = None
+        self.date_obj = None
         self.start_of_week = None
         self.end_of_week = None
 
@@ -41,10 +42,15 @@ class TestDateTime:
             return str(year) + '-' + str(month) + '-' + str(day)
 
     def getNow(self):
-        return self.dateTimeFormatter(self.now)
+        self.dateNow = datetime.now()
+        date_str = str(self.dateNow.year) + '-' + str(self.dateNow.month) + '-' + str(self.dateNow.day)
+        self.date_obj = datetime.strptime(date_str, '%Y-%m-%d')
+
+    def showDateNow(self):
+        return self.dateTimeFormatter(self.dateNow)
 
     def getStartOfWeek(self):
-        self.start_of_week = datetime.strptime(self.dateTimeFormatter(self.now, False), '%Y-%m-%d')
+        self.start_of_week = self.date_obj - timedelta(days=self.date_obj.weekday())
         return self.dateTimeFormatter(self.start_of_week)
 
     def getEndOfWeek(self):
@@ -53,9 +59,10 @@ class TestDateTime:
 
 
 testDateTime = TestDateTime()
-
-print(testDateTime.getNow())
+testDateTime.getNow()
+print(testDateTime.showDateNow())
 print(testDateTime.getStartOfWeek())
 print(testDateTime.getEndOfWeek())
-testDateTime.getEndProcess()
-print(testDateTime.getProcessTime())
+
+
+
