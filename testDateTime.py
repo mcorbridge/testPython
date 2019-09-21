@@ -1,6 +1,5 @@
 from datetime import datetime, timedelta
 
-
 # todo: when I create the timesheet app, I need to know the start date and the end date (Monday - Sunday) of the week
 # todo: where the timesheet is being submitted
 
@@ -27,7 +26,7 @@ class TestDateTime:
 
     def getProcessTime(self):
         processTime = (self.getEndProcess() - self.startProc) / 1000
-        return str(processTime) + " msec"
+        print(str(processTime) + " msec")
 
     def dateTimeFormatter(self, date, isDayName=True):
         year = date.year
@@ -60,9 +59,36 @@ class TestDateTime:
 
 testDateTime = TestDateTime()
 testDateTime.getNow()
-print(testDateTime.showDateNow())
-print(testDateTime.getStartOfWeek())
-print(testDateTime.getEndOfWeek())
+print("date now: " + testDateTime.showDateNow())
+print("week started on: " + testDateTime.getStartOfWeek())
+print("week ended on: " + testDateTime.getEndOfWeek())
+testDateTime.getEndProcess()
+testDateTime.getProcessTime()
+
+class TestPythonTime:
+
+    def __init__(self):
+        print("******* init TestPythonTime *******")
+        self.time = datetime.now().time()
 
 
+    def printTime(self):
+        print(self.time)
 
+    def playTime(self):
+        print(self.time.hour)
+        print(self.time.minute)
+        print(self.time.microsecond)
+        print(self.time.fold)
+        print(self.time.max)
+        print(self.time.min)
+        print(self.time.second)
+        print(self.time.resolution)
+        print(self.time.tzinfo)
+        print(self.time.isoformat())
+        print(self.time.dst())
+        print(self.time.utcoffset())
+
+testPythonTime = TestPythonTime()
+testPythonTime.printTime()
+testPythonTime.playTime()
