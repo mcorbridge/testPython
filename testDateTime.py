@@ -89,6 +89,10 @@ class TestPythonTime:
         print(self.time.dst())
         print(self.time.utcoffset())
 
+    @staticmethod
+    def staticPrintTime():
+        print("staticmethod>> " + str(datetime.now().time()))
+
 testPythonTime = TestPythonTime()
 testPythonTime.printTime()
-testPythonTime.playTime()
+TestPythonTime.staticPrintTime()
