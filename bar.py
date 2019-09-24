@@ -69,17 +69,17 @@ print(myModule.func1())
 print(myModule.func2("Hello World!"))
 
 r = myModule.Square(5)
-print r.length  # automatically calls getter
+print (r.length)  # automatically calls getter
 r.length = 6  # automatically calls setter
-print r.length  # automatically calls getter
+print (r.length)  # automatically calls getter
 
 print
 
 starBucksCup = myModule.CoffeeCup()
 starBucksCup.color = "white"
-print starBucksCup.color
+print (starBucksCup.color)
 starBucksCup.content = "coffee"
-print starBucksCup.content
+print (starBucksCup.content)
 starBucksCup.empty()
 starBucksCup.fill("coffee")
 
