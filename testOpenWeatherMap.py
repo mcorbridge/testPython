@@ -5,7 +5,7 @@ import openweathermapy.core as owm
 
 units = 'imperial'
 settings = {"APPID":"5aead618eb034cfd535ab9331ee4ec05", "units":units, "lang":"US"}
-data = owm.get_current("Mashpee,US", **settings)
+data = owm.get_current("Denver,US", **settings)
 fahrenheit_degrees = u'\N{DEGREE SIGN}' + "F"
 celcius_degrees = u'\N{DEGREE SIGN}' + "C"
 doIteration = False

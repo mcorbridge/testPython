@@ -3,7 +3,7 @@
 def fib(n):    # write Fibonacci series up to n
     a, b = 0, 1
     while b < n:
-        print b,
+        print(b),
         a, b = b, a+b
 
 def fib2(n):   # return Fibonacci series up to n
@@ -27,8 +27,8 @@ class FooClass:
 		
 if __name__ == "__main__":
 	fib(100)
-	print str(fib2(100))
+	print (str(fib2(100)))
 	myClass = MyClass()
 	myClass.func()
 	fooClass = FooClass()
-	print fooClass.fooFunction("Wlly")
+	print (fooClass.fooFunction("Wally"))

@@ -19,6 +19,7 @@ from flask import request  # https://2.python-requests.org/en/master/#
 
 # If `entrypoint` is not defined in app.yaml, App Engine will look for an app
 # called `app` in `main.py`.
+# https://stackoverflow.com/questions/10434599/get-the-data-received-in-a-flask-request
 app = Flask(__name__)
 
 
